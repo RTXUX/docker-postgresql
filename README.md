@@ -1,5 +1,9 @@
 [![Circle CI](https://circleci.com/gh/sameersbn/docker-postgresql.svg?style=shield)](https://circleci.com/gh/sameersbn/docker-postgresql) [![Docker Repository on Quay.io](https://quay.io/repository/sameersbn/postgresql/status "Docker Repository on Quay.io")](https://quay.io/repository/sameersbn/postgresql) [![](https://badge.imagelayers.io/sameersbn/postgresql.svg)](https://imagelayers.io/?images=sameersbn/postgresql:latest 'Get your own badge on imagelayers.io')
 
+Note: this is a fork of https://github.com/sameersbn/docker-postgresql for sameersbn/gitlab usage. This fork upgrades version of postgresql and pushes its container images to ghcr.io. Latest GitLab will require PostgreSQL 13+.
+
+Image information of this repo: <https://github.com/taoky/docker-postgresql/pkgs/container/postgresql>
+
 # sameersbn/postgresql:13-20221205
 
 - [Introduction](#introduction)
