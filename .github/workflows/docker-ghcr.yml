@@ -1,0 +1,33 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image (PR only)
+      if: github.ref != 'refs/heads/master'
+      run: make release
+    - name: Login to ghcr
+      uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+      if: github.ref == 'refs/heads/master'
+      with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build and push
+      if: github.ref == 'refs/heads/master'
+      run: make push
